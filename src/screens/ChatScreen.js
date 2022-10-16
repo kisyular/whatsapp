@@ -8,8 +8,19 @@ import bg from '../../assets/images/BG.png'
 import Message from '../components/Message'
 import messages from '../../assets/data/messages.json'
 import InputBox from '../components/InputBox'
+import { useRoute, useNavigation } from '@react-navigation/native'
+import { useEffect } from 'react'
 
 const ChatScreen = () => {
+	const navigation = useNavigation()
+	const route = useRoute()
+
+	console.log(route)
+
+	useEffect(() => {
+		navigation.setOptions({ title: route.params.name })
+	}, [route.params])
+
 	return (
 		<KeyboardAvoidingView
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
