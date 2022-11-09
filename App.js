@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View } from 'react-native'
-import ChatScreen from './src/screens/ChatScreen'
 import Navigator from './src/navigation/index'
 import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
