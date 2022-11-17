@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
 import { useNavigation } from '@react-navigation/native'
-import { Amplify, Auth, API, graphqlOperation } from 'aws-amplify'
+import { Auth, API, graphqlOperation } from 'aws-amplify'
 import { createChatRoom, createUserChatRoom } from '../../graphql/mutations'
 
 const ContactListItem = ({ user }) => {

@@ -7,12 +7,16 @@ import { useNavigation } from '@react-navigation/native'
 const ChatListItem = ({ chat }) => {
 	const navigation = useNavigation()
 
+	const user = chat.users
+		? chat.users.items[0].user
+		: chat.chatRoom.users.items[0].user
+
 	return (
 		<Pressable
 			onPress={() =>
 				navigation.navigate('Chat', {
 					id: chat.id,
-					name: chat.user.name,
+					name: user?.name,
 				})
 			}
 			style={styles.container}
@@ -20,7 +24,7 @@ const ChatListItem = ({ chat }) => {
 			{/* User Avatar */}
 			<Image
 				source={{
-					uri: chat.user.image,
+					uri: user?.image,
 				}}
 				style={styles.image}
 			/>
@@ -30,15 +34,15 @@ const ChatListItem = ({ chat }) => {
 				{/* Row */}
 				<View style={styles.row}>
 					<Text numberOfLines={1} style={styles.name}>
-						{chat.user.name}
+						{user?.name}
 					</Text>
 					<Text style={styles.subTitle}>
-						{dayjs(chat.lastMessage.createdAt).fromNow()}
+						{dayjs(chat.lastMessage?.createdAt).fromNow()}
 					</Text>
 				</View>
 
 				<Text numberOfLines={2} style={styles.subTitle}>
-					{chat.lastMessage.text}
+					{chat.lastMessage?.text}
 				</Text>
 			</View>
 		</Pressable>
